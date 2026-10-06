@@ -81,8 +81,8 @@ mvn spring-boot:run
 
 Luego abrir en el navegador:
 
-- Cliente web: <http://localhost:8081/>
-- API REST: <http://localhost:8081/api/clubes>
+- Cliente web: <http://localhost:8085/>
+- API REST: <http://localhost:8085/api/clubes>
 
 ### Configuración de la base de datos
 
@@ -137,35 +137,35 @@ Códigos HTTP: `200` OK · `201` creado · `204` eliminado · `400` datos invál
 
 ```bash
 # 1. Crear el catálogo
-curl -X POST http://localhost:8081/api/entrenadores \
+curl -X POST http://localhost:8085/api/entrenadores \
      -H "Content-Type: application/json" \
      -d '{"nombre":"Alberto","apellido":"Gamero","edad":55,"nacionalidad":"Colombiana"}'
 
-curl -X POST http://localhost:8081/api/asociaciones \
+curl -X POST http://localhost:8085/api/asociaciones \
      -H "Content-Type: application/json" \
      -d '{"nombre":"Federacion Colombiana de Futbol","pais":"Colombia","presidente":"Ramon Jesurun"}'
 
-curl -X POST http://localhost:8081/api/competiciones \
+curl -X POST http://localhost:8085/api/competiciones \
      -H "Content-Type: application/json" \
      -d '{"nombre":"Copa Libertadores","montoPremio":5000000,"fechaInicio":"2026-02-01","fechaFin":"2026-11-30"}'
 
-curl -X POST http://localhost:8081/api/jugadores \
+curl -X POST http://localhost:8085/api/jugadores \
      -H "Content-Type: application/json" \
      -d '{"nombre":"David","apellido":"Macalister","numero":10,"posicion":"Mediocampista"}'
 
 # 2. Crear el club
-curl -X POST http://localhost:8081/api/clubes \
+curl -X POST http://localhost:8085/api/clubes \
      -H "Content-Type: application/json" \
      -d '{"nombre":"Millonarios","ciudad":"Bogota"}'
 
 # 3. Enlazar las relaciones (1:1, N:1, 1:N, N:M)
-curl -X PUT  http://localhost:8081/api/clubes/1/entrenador/1
-curl -X PUT  http://localhost:8081/api/clubes/1/asociacion/1
-curl -X POST http://localhost:8081/api/clubes/1/jugadores/1
-curl -X POST http://localhost:8081/api/clubes/1/competiciones/1
+curl -X PUT  http://localhost:8085/api/clubes/1/entrenador/1
+curl -X PUT  http://localhost:8085/api/clubes/1/asociacion/1
+curl -X POST http://localhost:8085/api/clubes/1/jugadores/1
+curl -X POST http://localhost:8085/api/clubes/1/competiciones/1
 
 # 4. Ver el club con todas sus relaciones resueltas
-curl http://localhost:8081/api/clubes/1
+curl http://localhost:8085/api/clubes/1
 ```
 
 Respuesta de `GET /api/clubes/1` (las referencias se devuelven resueltas):
