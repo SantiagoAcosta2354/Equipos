@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos :: head('Inicio')}"></head>
+<body>
+
+<div th:replace="~{fragmentos :: nav}"></div>
+
+<main class="container">
+
+	<div class="p-4 mb-4 bg-white rounded shadow-sm">
+		<h1 class="h3 mb-0">Mundial de Clubes</h1>
+	</div>
+
+	<!-- Contadores por colección -->
+	<div class="row g-3 mb-4">
+		<div class="col-6 col-md-4 col-lg">
+			<div class="card tarjeta-contador h-100 shadow-sm">
+				<div class="card-body">
+					<div class="etiqueta-relacion">Colección</div>
+					<div class="numero" th:text="${totalClubes}">0</div>
+					<a class="stretched-link" th:href="@{/clubes}">Clubes</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-6 col-md-4 col-lg">
+			<div class="card tarjeta-contador h-100 shadow-sm">
+				<div class="card-body">
+					<div class="etiqueta-relacion">Colección</div>
+					<div class="numero" th:text="${totalEntrenadores}">0</div>
+					<a class="stretched-link" th:href="@{/entrenadores}">Entrenadores</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-6 col-md-4 col-lg">
+			<div class="card tarjeta-contador h-100 shadow-sm">
+				<div class="card-body">
+					<div class="etiqueta-relacion">Colección</div>
+					<div class="numero" th:text="${totalJugadores}">0</div>
+					<a class="stretched-link" th:href="@{/jugadores}">Jugadores</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-6 col-md-4 col-lg">
+			<div class="card tarjeta-contador h-100 shadow-sm">
+				<div class="card-body">
+					<div class="etiqueta-relacion">Colección</div>
+					<div class="numero" th:text="${totalAsociaciones}">0</div>
+					<a class="stretched-link" th:href="@{/asociaciones}">Asociaciones</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-6 col-md-4 col-lg">
+			<div class="card tarjeta-contador h-100 shadow-sm">
+				<div class="card-body">
+					<div class="etiqueta-relacion">Colección</div>
+					<div class="numero" th:text="${totalCompeticiones}">0</div>
+					<a class="stretched-link" th:href="@{/competiciones}">Competiciones</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</main>
+
+<footer th:replace="~{fragmentos :: pie}"></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
