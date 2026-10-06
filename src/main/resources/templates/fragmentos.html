@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<!--
+  Fragmentos reutilizables del cliente web.
+  Se insertan en las demas plantillas con th:replace="~{fragmentos :: nombre}".
+-->
+<head th:fragment="head(titulo)">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title th:text="${titulo} + ' | Mundial de Clubes'">Mundial de Clubes</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" th:href="@{/css/estilos.css}">
+</head>
+<body>
+
+<!-- Barra de navegación común -->
+<nav th:fragment="nav" class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+	<div class="container">
+		<a class="navbar-brand fw-bold" th:href="@{/}">🏆 Mundial de Clubes</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="menu">
+			<ul class="navbar-nav me-auto">
+				<li class="nav-item"><a class="nav-link" th:href="@{/}">Inicio</a></li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/clubes}">Clubes</a></li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/entrenadores}">Entrenadores</a></li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/jugadores}">Jugadores</a></li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/asociaciones}">Asociaciones</a></li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/competiciones}">Competiciones</a></li>
+			</ul>
+			<a class="btn btn-sm btn-outline-light" th:href="@{/api}">API REST</a>
+		</div>
+	</div>
+</nav>
+
+<!-- Pie de página común -->
+<footer th:fragment="pie" class="text-center text-muted small py-4">
+	Mundial de Clubes — Club · Entrenador · Jugador · Asociación · Competición
+</footer>
+
+</body>
+</html>

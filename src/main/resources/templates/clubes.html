@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos :: head('Clubes')}"></head>
+<body>
+
+<div th:replace="~{fragmentos :: nav}"></div>
+
+<main class="container">
+
+	<h1 class="h3 mb-3">Clubes</h1>
+
+	<div class="row g-4">
+
+		<!-- Listado de clubes -->
+		<div class="col-lg-8">
+			<div class="card shadow-sm">
+				<div class="card-header fw-semibold">Clubes registrados</div>
+				<div class="table-responsive">
+					<table class="table table-hover align-middle mb-0">
+						<thead class="table-light">
+							<tr>
+								<th>Id</th>
+								<th>Nombre</th>
+								<th>Ciudad</th>
+								<th>Entrenador</th>
+								<th class="text-center">Jugadores</th>
+								<th>Asociación</th>
+								<th class="text-center">Compet.</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="club : ${clubes}">
+								<td th:text="${club.id}">1</td>
+								<td class="fw-semibold" th:text="${club.nombre}">Nombre</td>
+								<td th:text="${club.ciudad}">Ciudad</td>
+								<td th:text="${club.entrenador != null
+										? club.entrenador.nombre + ' ' + club.entrenador.apellido
+										: '—'}">—</td>
+								<td class="text-center" th:text="${#lists.size(club.jugadores)}">0</td>
+								<td th:text="${club.asociacion != null ? club.asociacion.nombre : '—'}">—</td>
+								<td class="text-center" th:text="${#lists.size(club.competiciones)}">0</td>
+								<td class="text-end">
+									<a class="btn btn-sm btn-outline-primary"
+										th:href="@{/clubes/{id}(id=${club.id})}">Ficha</a>
+									<form th:action="@{/clubes/eliminar/{id}(id=${club.id})}"
+										method="post" class="d-inline"
+										onsubmit="return confirm('¿Eliminar este club?');">
+										<button class="btn btn-sm btn-outline-danger">Eliminar</button>
+									</form>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="card-body py-3" th:if="${#lists.isEmpty(clubes)}">
+					<p class="text-muted mb-0">Todavía no hay clubes. Crea el primero con el formulario de la derecha.</p>
+				</div>
+			</div>
+		</div>
+
+		<!-- Formulario de creación -->
+		<div class="col-lg-4">
+			<div class="card shadow-sm">
+				<div class="card-header fw-semibold">Nuevo club</div>
+				<div class="card-body">
+					<form th:action="@{/clubes/crear}" method="post">
+						<div class="mb-3">
+							<label class="form-label" for="nombre">Nombre</label>
+							<input class="form-control" id="nombre" name="nombre"
+								placeholder="Millonarios" required>
+						</div>
+						<div class="mb-3">
+							<label class="form-label" for="ciudad">Ciudad</label>
+							<input class="form-control" id="ciudad" name="ciudad"
+								placeholder="Bogotá" required>
+						</div>
+						<button class="btn btn-success w-100" type="submit">Crear club</button>
+					</form>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</main>
+
+<footer th:replace="~{fragmentos :: pie}"></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
