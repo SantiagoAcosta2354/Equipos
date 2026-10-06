@@ -1,0 +1,9 @@
+# Nada de esto debe entrar al contexto de build ni a la imagen
+target/
+.git/
+.gitattributes
+.gitignore
+configuracion-local.properties
+*.iml
+.idea/
+.vscode/
